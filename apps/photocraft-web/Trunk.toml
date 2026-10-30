@@ -1,0 +1,17 @@
+# Build with: trunk build --release   (from apps/photocraft-web)
+[build]
+target = "index.html"
+dist = "../../dist/web"
+public_url = "./"
+filehash = true
+
+# The AI worker is a second wasm with its own build flags (WebAssembly SIMD), so it is built by its
+# own Trunk project and copied next to the app. Needs a POSIX shell, like packaging/.
+[[hooks]]
+stage = "post_build"
+command = "sh"
+command_arguments = ["build-ai-worker.sh"]
+
+[serve]
+addresses = ["127.0.0.1"]
+port = 8765

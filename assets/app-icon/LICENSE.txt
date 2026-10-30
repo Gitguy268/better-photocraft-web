@@ -1,0 +1,8 @@
+PhotoCraft app icon (photocraft.svg, photocraft-small.svg and every file derived from them in
+this directory: photocraft-1024.png, photocraft.icns, photocraft.ico, hicolor/).
+
+Original artwork made for this project by the project owner: an engraving-style drawing created
+in ArtCraft, then vectorised. No third-party material. Upstream licenses it like the rest of PhotoCraft, under MIT OR Apache-2.0 at your option; this
+edition distributes it under the MIT option (see /LICENSE).
+
+Regenerate the derived files with packaging/icons.sh.

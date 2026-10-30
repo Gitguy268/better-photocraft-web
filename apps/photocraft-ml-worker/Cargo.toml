@@ -1,0 +1,31 @@
+[package]
+name = "photocraft-ml-worker"
+description = "PhotoCraft's AI worker for the browser: runs local models in a Web Worker, in its own wasm"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "photocraft-ml-worker"
+path = "src/main.rs"
+
+# Trunk builds a page's main program whether or not the page names one, and without one it would
+# build the worker a second time as a page script, over the worker's own output. This empty
+# program is that main; nothing ships it.
+[[bin]]
+name = "photocraft-ml-worker-page"
+path = "src/page.rs"
+
+[dependencies]
+photocraft-ml = { workspace = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+photocraft-ml = { workspace = true, features = ["runtime"] }
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
+web-sys = { version = "0.3", features = ["DedicatedWorkerGlobalScope", "WorkerGlobalScope", "MessageEvent", "CacheStorage", "Cache", "Response"] }

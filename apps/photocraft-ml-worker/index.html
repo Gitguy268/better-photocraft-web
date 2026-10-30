@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PhotoCraft AI worker</title>
+  <!-- Not a page anyone opens: Trunk reads this to build the worker (generated loader, glue, wasm). -->
+  <link data-trunk rel="rust" data-bin="photocraft-ml-worker-page" />
+  <link data-trunk rel="rust" data-bin="photocraft-ml-worker" data-type="worker" data-loader-shim data-cargo-profile="wasm-worker" />
+</head>
+<body></body>
+</html>

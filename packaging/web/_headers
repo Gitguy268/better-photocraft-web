@@ -1,0 +1,40 @@
+# Netlify / Cloudflare Pages header rules (see HOSTING.md). Other hosts: set the same headers.
+/*
+  X-Content-Type-Options: nosniff
+
+/*.wasm
+  Content-Type: application/wasm
+
+# Files whose names change with their contents: the boot module's hashed files and the AI
+# worker's checksum-named folder. They can be cached forever.
+/photocraft-web-*
+  Cache-Control: public, max-age=31536000, immutable
+
+/ai-worker-*
+  Cache-Control: public, max-age=31536000, immutable
+
+# app/ holds the app's wasm, gzipped and cut into parts whose names carry a content hash...
+/app/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ...and the app's loader and its list of parts, which keep their names from release to release.
+/app/photocraft-web.js
+  ! Cache-Control
+  Cache-Control: no-cache
+
+/app/parts.txt
+  ! Cache-Control
+  Cache-Control: no-cache
+
+# Files with fixed names must be revalidated, or an update is not seen.
+/index.html
+  Cache-Control: no-cache
+
+/sw.js
+  Cache-Control: no-cache
+
+/manifest.webmanifest
+  Cache-Control: no-cache
+
+/ai-worker.txt
+  Cache-Control: no-cache

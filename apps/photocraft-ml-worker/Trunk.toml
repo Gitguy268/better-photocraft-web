@@ -1,0 +1,7 @@
+# Built by ../photocraft-web's Trunk hook: `trunk build --release` here writes the worker's
+# generated loader, glue and wasm to ../../dist/ml-worker, and the hook copies them next to the app.
+[build]
+target = "index.html"
+dist = "../../dist/ml-worker"
+public_url = "./"
+filehash = false

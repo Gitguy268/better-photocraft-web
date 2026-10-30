@@ -1,0 +1,15 @@
+{
+  "name": "PhotoCraft",
+  "short_name": "PhotoCraft",
+  "description": "Photoshop-style image editor that runs in the browser, on your device.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#262626",
+  "theme_color": "#262626",
+  "icons": [
+    { "src": "icons/48/ai.storyteller.photocraft.png", "sizes": "48x48", "type": "image/png" },
+    { "src": "icons/256/ai.storyteller.photocraft.png", "sizes": "256x256", "type": "image/png" },
+    { "src": "icons/512/ai.storyteller.photocraft.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -1,0 +1,10 @@
+# The worker is built from this directory (see Trunk.toml here and the hook in
+# ../photocraft-web/Trunk.toml), so these flags apply to it alone. WebAssembly SIMD makes
+# inference several times faster; the main app is built without it and keeps upstream's browser
+# support. A browser without SIMD can't load the worker, and the AI features then report that and
+# the classical methods keep working.
+[target.wasm32-unknown-unknown]
+rustflags = ["-C", "target-feature=+simd128"]
+
+[alias]
+xtask = "run -p xtask --"
