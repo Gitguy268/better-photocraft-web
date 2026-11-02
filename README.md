@@ -42,6 +42,28 @@
 
 <br>
 
+<!-- run-steps:start -->
+## Run it locally, step by step
+
+1. **Install [Rust](https://rustup.rs),** the WebAssembly target and Trunk:
+
+   ```sh
+   rustup target add wasm32-unknown-unknown
+   cargo install trunk --version 0.21.14 --locked
+   ```
+
+2. **Get the code:**
+
+   ```sh
+   git clone https://github.com/Gitguy268/better-photocraft-web.git
+   cd better-photocraft-web
+   ```
+
+3. **On a Mac, double-click `start.command`.** It builds the web version and serves it. Anywhere else, run `trunk build --release` in `apps/photocraft-web` and serve `dist/web` with any web server.
+
+4. **Open <http://localhost:8780/>** in your browser. Press `Ctrl+C` in the terminal to stop.
+<!-- run-steps:end -->
+
 ## What this edition adds
 
 This is **PhotoCraft 0.7.0 with additions** (version `0.7.0-better.1`): the same app, name, menus
