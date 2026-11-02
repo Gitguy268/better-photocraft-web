@@ -42,6 +42,10 @@
 
 <br>
 
+<!-- live-links -->
+**Project page:** [gitguy268.github.io/better-photocraft-web](https://gitguy268.github.io/better-photocraft-web/) · [better-photocraft-web.vercel.app](https://better-photocraft-web.vercel.app)
+<!-- /live-links -->
+
 <!-- run-steps:start -->
 ## Run it locally, step by step
 
