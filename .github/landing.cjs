@@ -32,10 +32,10 @@ const absolutize = (html) =>
     .replace(/\bhref="(?!https?:|mailto:|#|\/\/)\.?\/?([^"]+)"/g, (_, p) => `href="${blob}${p}"`);
 
 const body = absolutize(marked.parse(md));
-// Use the first real heading (a `# comment` inside a code block doesn't count), then the repo name.
-const firstHeading = marked.lexer(md).find((t) => t.type === 'heading');
-const htmlHeading = md.match(/<h1[^>]*>([^<]+)<\/h1>/i);
-const title = (firstHeading ? firstHeading.text : htmlHeading ? htmlHeading[1] : path.basename(slugRepo)).replace(/<[^>]+>/g, '').replace(/[*_`]/g, '').trim() || path.basename(slugRepo);
+const h1 = marked.lexer(md).find((t) => t.type === 'heading' && t.depth === 1);
+const htmlHeading = md.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+const clean = (s) => s.replace(/<[^>]+>/g, '').replace(/[*_`]/g, '').trim();
+const title = clean(h1 ? h1.text : htmlHeading ? htmlHeading[1] : '') || path.basename(slugRepo);
 const firstPara = (body.match(/<p>([\s\S]*?)<\/p>/) || [, ''])[1].replace(/<[^>]+>/g, '').replace(/"/g, '&quot;').slice(0, 160);
 
 const page = `<!doctype html>
