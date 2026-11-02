@@ -21,7 +21,7 @@ thiserror = { workspace = true }
 # MIT OR Apache-2.0. Loads ONNX files at run time, so no model is ever built in.
 tract-onnx = { version = "0.23.8", optional = true }
 # MIT OR Apache-2.0.
-sha2 = { version = "0.10", optional = true }
+sha2 = { version = "0.11", optional = true }
 
 # tract's random-number dependency needs its browser entropy source named explicitly on wasm.
 [target.'cfg(target_arch = "wasm32")'.dependencies]
