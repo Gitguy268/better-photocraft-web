@@ -354,7 +354,10 @@ pub(crate) fn encode(src: &Image, plan: Plan, opts: &EncodeOptions) -> Result<Ve
             && x >= 1.0
             && y >= 1.0
         {
-            enc.set_density(jpeg_encoder::PixelDensity { density: (x.round().min(65535.0) as u16, y.round().min(65535.0) as u16), unit: jpeg_encoder::PixelDensityUnit::Inches });
+            enc.set_density(jpeg_encoder::PixelDensity {
+                density: (x.round().min(65535.0) as u16, y.round().min(65535.0) as u16),
+                unit: jpeg_encoder::PixelDensityUnit::Inches,
+            });
         }
         // Metadata too large for its one segment is left out (and reported by the fidelity
         // warnings) rather than failing the whole export.
