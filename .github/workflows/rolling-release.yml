@@ -163,11 +163,11 @@ jobs:
           if [ "$PRERELEASE" = true ]; then flags=(--prerelease --latest=false); else flags=(--prerelease=false --latest); fi
           if gh release view latest > /dev/null 2>&1; then
             gh release edit latest --title "Rolling Release" --notes "$notes" "${flags[@]}"
-            # Drop assets that this build no longer produces.
-            gh release view latest --json assets --jq '.assets[].name' | while IFS= read -r a; do
-              [ -e "out/$a" ] || gh release delete-asset latest "$a" --yes
-            done
           else
             gh release create latest --verify-tag --title "Rolling Release" --notes "$notes" "${flags[@]}"
           fi
           if [ -n "$(ls -A out)" ]; then gh release upload latest out/* --clobber; fi
+          # Then drop assets that this build no longer produces.
+          gh release view latest --json assets --jq '.assets[].name' | while IFS= read -r a; do
+            [ -e "out/$a" ] || gh release delete-asset latest "$a" --yes
+          done
